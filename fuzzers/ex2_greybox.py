@@ -74,15 +74,20 @@ def mutate(data: bytes) -> bytes:
     choice = random.randint(0, 2)
 
     if choice == 0:
+        l = random.randrange(len(data))
+        b = random.randrange(256)
+        data[l] = b
         # TODO: cambiar un byte en una posicion aleatoria por otro aleatorio
         # Pista: random.randrange(len(data)) da una posicion, random.randrange(256) un byte
-        pass
 
     elif choice == 1:
-        # TODO: borrar un byte en una posicion aleatoria
-        pass
+        l = random.randrange(len(data))
+        data = data[:l] + data[l + 1:]
 
     elif choice == 2:
+        l = random.randrange(len(data))
+        b = random.randrange(256)
+        data = data[:l] + bytes([b]) + data[l:]
         # TODO: insertar un byte aleatorio en una posicion aleatoria
         pass
 
